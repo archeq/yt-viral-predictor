@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  app-torch:  # app name
+    build: .  # build from the current directory
+    image: pytorch-lab-img
+    container_name: pytorch-container  # container name
+
+    # mapping current directory to /app in the container
+    volumes:
+      - .:/app
+
+    # a trick to keep the container running
+    command: tail -f /dev/null
