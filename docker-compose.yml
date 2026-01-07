@@ -10,5 +10,9 @@ services:
     volumes:
       - .:/app
 
+    # mapping port 8888 of the container to port 8888 of the host
+    ports:
+      - "8888:8888"
+
     # a trick to keep the container running
     command: tail -f /dev/null
