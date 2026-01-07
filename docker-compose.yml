@@ -14,5 +14,7 @@ services:
     ports:
       - "8888:8888"
 
-    # a trick to keep the container running
-    command: tail -f /dev/null
+
+    # --ip=0.0.0.0: allows access from any IP address
+    # --allow-root: Docker acts as root, Jupyter forbids running as root by default
+    command: jupyter notebook --ip=0.0.0.0 --port=8888 --no-browser --allow-root
