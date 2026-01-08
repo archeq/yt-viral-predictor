@@ -8,8 +8,6 @@ services:
     image: pytorch-lab-gpu
     container_name: pytorch-gpu-container
 
-
-
     volumes:
       - .:/app
 
