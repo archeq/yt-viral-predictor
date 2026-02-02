@@ -1,8 +1,28 @@
-torch==2.1.2 --index-url https://download.pytorch.org/whl/cu121
-torchvision
-torchaudio
+# PyTorch (GPU version with CUDA 12.1)
+--index-url https://download.pytorch.org/whl/cu121
+torch==2.1.2
+torchvision==0.16.2
+torchaudio==2.1.2
 
+# HuggingFace Transformers (for DistilBERT)
+transformers>=4.36.0
+
+# Data processing
+pandas>=2.0.0
 numpy<2.0
+scikit-learn>=1.3.0
 
+# Image processing
+Pillow>=10.0.0
+
+# YouTube API
+google-api-python-client>=2.100.0
+requests>=2.31.0
+
+# Jupyter
 jupyter
 notebook
+
+# Utilities
+tqdm>=4.65.0
+

@@ -1,20 +1,41 @@
 version: '3.8'
 
 services:
-  app-torch:  # app name
-    build: .  # build from the current directory
-    image: pytorch-lab-img
-    container_name: pytorch-container  # container name
-
-    # mapping current directory to /app in the container
+  # Data download (run manually: docker-compose run app)
+  app:
+    build: .
+    image: yt-viral-predictor
+    container_name: viral-predictor
     volumes:
       - .:/app
+    environment:
+      - PYTHONUNBUFFERED=1
+    command: python main.py
+    profiles:
+      - download
 
-    # mapping port 8888 of the container to port 8888 of the host
+  # Jupyter Notebook
+  notebook:
+    build: .
+    image: yt-viral-predictor
+    container_name: viral-notebook
+    volumes:
+      - .:/app
     ports:
       - "8888:8888"
+    environment:
+      - PYTHONUNBUFFERED=1
+    command: jupyter notebook --ip=0.0.0.0 --port=8888 --no-browser --allow-root --NotebookApp.token=''
 
-
-    # --ip=0.0.0.0: allows access from any IP address
-    # --allow-root: Docker acts as root, Jupyter forbids running as root by default
-    command: jupyter notebook --ip=0.0.0.0 --port=8888 --no-browser --allow-root
+  # Training (run manually: docker-compose --profile training up train)
+  train:
+    build: .
+    image: yt-viral-predictor
+    container_name: viral-train
+    volumes:
+      - .:/app
+    environment:
+      - PYTHONUNBUFFERED=1
+    command: python train.py
+    profiles:
+      - training
