@@ -305,7 +305,7 @@ torchvision
 transformers
 pandas
 numpy
-Pillow>
+Pillow
 yt-dlp
 google-api-python-client
 tqdm
