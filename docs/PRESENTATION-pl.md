@@ -21,7 +21,7 @@ Twórcy treści na YouTube często zastanawiają się, jakie elementy sprawiają
 ## 2. Opis Problemu
 
 ### Rodzaj zadania
-**Klasyfikacja binarna** - model przewiduje prawdopodobieństwo, że film jest "viralem" (klasa 1) lub "nie-viralem" (klasa 0).
+Regresja znormalizowana lub soft ranking - model przewiduje ciągły wynik wiralowości w zakresie [0, 1], gdzie wartości bliskie 1 oznaczają wyższy potencjał viralowy.
 
 ### Definicja matematyczna
 
