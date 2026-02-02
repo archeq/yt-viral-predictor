@@ -179,8 +179,11 @@ self.classifier = nn.Sequential(
 
 ### Funkcja kosztu
 
-**Binary Cross-Entropy Loss**:
+**Binary Cross-Entropy Loss (BCE)**: 
+
 $$\mathcal{L} = -\frac{1}{N}\sum_{i=1}^{N}[y_i \log(\hat{y}_i) + (1-y_i)\log(1-\hat{y}_i)]$$
+
+**Uwaga**: Pomimo użycia BCE, model przewiduje **ciągły wynik wiralowości** (nie dyskretną klasę). BCE działa jako funkcja kosztu dla **regresji z sigmoidą**, karząc za odległość predykcji od znormalizowanego celu.
 
 ### Algorytm optymalizacji
 
