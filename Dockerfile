@@ -15,9 +15,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 # Copy and install requirements
-COPY requirements-docker.txt .
+COPY requirements.txt .
 RUN pip install --upgrade pip && \
-    pip install --default-timeout=1000 --no-cache-dir -r requirements-docker.txt
+    pip install --default-timeout=1000 --no-cache-dir -r requirements.txt
 
 # Copy application code
 COPY . .

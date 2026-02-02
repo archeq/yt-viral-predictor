@@ -1,27 +1,44 @@
-# PyTorch (CPU version)
-torch==2.1.2
-torchvision==0.16.2
-torchaudio==2.1.2
+# ===========================================
+# YouTube Viral Predictor - Requirements
+# PyTorch with CUDA 12.4 support
+# ===========================================
 
-# HuggingFace Transformers (for DistilBERT)
-transformers>=4.36.0
+# --- PyTorch (CUDA 12.4) ---
+--extra-index-url https://download.pytorch.org/whl/cu124
+torch==2.6.0+cu124
+torchvision==0.21.0+cu124
+torchaudio==2.6.0+cu124
 
-# Data processing
-pandas>=2.0.0
-numpy<2.0
-scikit-learn>=1.3.0
+# --- HuggingFace (NLP) ---
+transformers>=5.0.0
+tokenizers>=0.22.0
+safetensors>=0.7.0
+huggingface_hub>=1.3.0
 
-# Image processing
-Pillow>=10.0.0
+# --- Data Processing ---
+pandas>=3.0.0
+numpy==1.26.4
+scikit-learn>=1.8.0
+scipy>=1.17.0
 
-# YouTube API
-google-api-python-client>=2.100.0
-requests>=2.31.0
+# --- Image Processing ---
+pillow>=12.0.0
 
-# Jupyter
-jupyter
-notebook
+# --- YouTube API ---
+google-api-python-client>=2.188.0
+google-auth>=2.48.0
+google-auth-httplib2>=0.3.0
+google-auth-oauthlib>=1.2.4
+requests>=2.32.0
 
-# Utilities
-tqdm>=4.65.0
+# --- Jupyter ---
+jupyter>=1.1.0
+notebook>=7.5.0
+jupyterlab>=4.5.0
+
+# --- Utilities ---
+tqdm>=4.67.0
+PyYAML>=6.0.0
+beautifulsoup4>=4.14.0
+yt-dlp>=2025.12.0
 
