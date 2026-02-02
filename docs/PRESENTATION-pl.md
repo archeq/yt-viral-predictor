@@ -51,10 +51,10 @@ gdzie:
 - $\sigma_{baseline}$ - odchylenie standardowe logarytmu wyświetleń
 
 **Interpretacja:**
-| V-Score | Klasyfikacja |
+| V-Score | Ocena |
 |---------|--------------|
-| > 1.0 | Viral (klasa 1) |
-| < -0.5 | Słaby wynik (klasa 0) |
+| > 1.0 | Viral  |
+| < -0.5 | Słaby wynik  |
 
 ---
 
