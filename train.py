@@ -47,8 +47,8 @@ train_dataset, test_dataset = get_train_test_datasets(
 # Use different transform for test set (no augmentation)
 test_dataset.transform = test_transform
 
-train_loader = DataLoader(train_dataset, batch_size=BATCH_SIZE, shuffle=True, num_workers=0, pin_memory=True)
-test_loader = DataLoader(test_dataset, batch_size=BATCH_SIZE, shuffle=False, num_workers=0, pin_memory=True)
+train_loader = DataLoader(train_dataset, batch_size=BATCH_SIZE, shuffle=True, num_workers=0, pin_memory=True, drop_last=True)
+test_loader = DataLoader(test_dataset, batch_size=BATCH_SIZE, shuffle=False, num_workers=0, pin_memory=True, drop_last=True)
 
 model = ViralPredictor()
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
@@ -69,7 +69,7 @@ print(f"Trainable parameters: {trainable_params:,} / {total_params:,} ({100*trai
 
 criterion = nn.BCELoss()
 optimizer = optim.Adam(model.classifier.parameters(), lr=LEARNING_RATE, weight_decay=1e-3)
-scheduler = ReduceLROnPlateau(optimizer, mode='min', factor=0.5, patience=3, verbose=True)
+scheduler = ReduceLROnPlateau(optimizer, mode='min', factor=0.5, patience=3)
 
 
 def evaluate(model, dataloader, criterion, device):
