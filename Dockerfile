@@ -11,13 +11,13 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libsm6 \
     libxext6 \
     libxrender-dev \
-    libgl1-mesa-glx \
+    libgl1 \
     && rm -rf /var/lib/apt/lists/*
 
 # Copy and install requirements
-COPY requirements-1.txt .
+COPY requirements-docker.txt .
 RUN pip install --upgrade pip && \
-    pip install --default-timeout=1000 --no-cache-dir -r requirements-1.txt
+    pip install --default-timeout=1000 --no-cache-dir -r requirements-docker.txt
 
 # Copy application code
 COPY . .
