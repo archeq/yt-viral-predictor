@@ -28,7 +28,7 @@ Regresja znormalizowana lub soft ranking - model przewiduje ciągły wynik wiral
 Niech:
 - $x_{img} \in \mathbb{R}^{224 \times 224 \times 3}$ - miniaturka filmu (obraz RGB)
 - $x_{txt} \in \mathbb{N}^{L}$ - tytuł filmu (sekwencja tokenów o długości L)
-- $y \in \{0, 1\}$ - etykieta (0 = słaby wynik, 1 = viral)
+- $y \in \[0, 1\]$ - etykieta (0 = słaby wynik, 1 = viral)
 
 Model $f_\theta$ przewiduje:
 $$\hat{y} = f_\theta(x_{img}, x_{txt}) = \sigma(g(h_{img}(x_{img}) \oplus h_{txt}(x_{txt})))$$
