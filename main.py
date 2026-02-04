@@ -24,7 +24,7 @@ def main():
     downloader = DataDownloader(
         api_key=API_KEY,
         niches=NICHES,
-        OUTPUT_FOLDER="data/raw/"
+        output_folder="data/raw/"
     )
 
     discovered_channels = downloader.channels_by_niche(NICHES, max_searches=3)

@@ -9,12 +9,12 @@ from tqdm import tqdm
 
 
 class DataDownloader:
-    def __init__(self, api_key, niches, OUTPUT_FOLDER="data/raw/", WINDOW_SIZE=30, MIN_PERIODS=5):
+    def __init__(self, api_key, niches, output_folder="data/raw/", window_size=30, min_periods=5):
         self.api_key = api_key
         self.niches = niches
-        self.OUTPUT_FOLDER = OUTPUT_FOLDER
-        self.WINDOW_SIZE = WINDOW_SIZE
-        self.MIN_PERIODS = MIN_PERIODS
+        self.OUTPUT_FOLDER = output_folder
+        self.WINDOW_SIZE = window_size
+        self.MIN_PERIODS = min_periods
         if not os.path.exists(self.OUTPUT_FOLDER):
             os.makedirs(self.OUTPUT_FOLDER)
         # Create thumbnails folder
