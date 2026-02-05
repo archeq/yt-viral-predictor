@@ -21,14 +21,14 @@ Twórcy treści na YouTube często zastanawiają się, jakie elementy sprawiają
 ## 2. Opis Problemu
 
 ### Rodzaj zadania
-**Klasyfikacja binarna** - model przewiduje prawdopodobieństwo, że film jest "viralem" (klasa 1) lub "nie-viralem" (klasa 0).
+Regresja znormalizowana lub soft ranking - model przewiduje ciągły wynik wiralowości w zakresie [0, 1], gdzie wartości bliskie 1 oznaczają wyższy potencjał viralowy.
 
 ### Definicja matematyczna
 
 Niech:
 - $x_{img} \in \mathbb{R}^{224 \times 224 \times 3}$ - miniaturka filmu (obraz RGB)
 - $x_{txt} \in \mathbb{N}^{L}$ - tytuł filmu (sekwencja tokenów o długości L)
-- $y \in \{0, 1\}$ - etykieta (0 = słaby wynik, 1 = viral)
+- $y \in \[0, 1\]$ - etykieta (0 = słaby wynik, 1 = viral)
 
 Model $f_\theta$ przewiduje:
 $$\hat{y} = f_\theta(x_{img}, x_{txt}) = \sigma(g(h_{img}(x_{img}) \oplus h_{txt}(x_{txt})))$$
@@ -51,10 +51,10 @@ gdzie:
 - $\sigma_{baseline}$ - odchylenie standardowe logarytmu wyświetleń
 
 **Interpretacja:**
-| V-Score | Klasyfikacja |
+| V-Score | Ocena |
 |---------|--------------|
-| > 1.0 | Viral (klasa 1) |
-| < -0.5 | Słaby wynik (klasa 0) |
+| > 1.0 | Viral  |
+| < -0.5 | Słaby wynik  |
 
 ---
 
@@ -179,8 +179,11 @@ self.classifier = nn.Sequential(
 
 ### Funkcja kosztu
 
-**Binary Cross-Entropy Loss**:
+**Binary Cross-Entropy Loss (BCE)**: 
+
 $$\mathcal{L} = -\frac{1}{N}\sum_{i=1}^{N}[y_i \log(\hat{y}_i) + (1-y_i)\log(1-\hat{y}_i)]$$
+
+**Uwaga**: Pomimo użycia BCE, model przewiduje **ciągły wynik wiralowości** (nie dyskretną klasę). BCE działa jako funkcja kosztu dla **regresji z sigmoidą**, karząc za odległość predykcji od znormalizowanego celu.
 
 ### Algorytm optymalizacji
 
@@ -305,7 +308,7 @@ torchvision
 transformers
 pandas
 numpy
-Pillow>
+Pillow
 yt-dlp
 google-api-python-client
 tqdm
